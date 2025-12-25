@@ -1,0 +1,55 @@
+/* 기본 리셋 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9fafb;
+  color: #333;
+}
+
+/* 링크 기본 스타일 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 헤더 스타일 */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 네비게이션 메뉴 */
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  font-size: 16px;
+  font-weight: 600;
+  color: #444;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #0070f3; /* 파란색 hover 효과 */
+}
+
+/* 프로필 아이콘 */
+nav img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
