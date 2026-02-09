@@ -28,7 +28,8 @@ export default function Navigation() {
         {user ?  
             <nav>
               <Link href="/profile">
-                <img src="/user-icon.svg" alt="User Profile" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Sample_User_Icon.svg"/>
+                User Profile
               </Link>
               <Link href="/" onClick={signOut}>Sing Out</Link>
             </nav>

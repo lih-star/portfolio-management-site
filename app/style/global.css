@@ -14,8 +14,10 @@ html, body {
 
 /* 링크 기본 스타일 */
 a {
+  display: flex;
   text-decoration: none;
   color: inherit;
+  align-items: center;
 }
 
 /* 헤더 스타일 */
