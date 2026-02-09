@@ -1,9 +1,21 @@
-// app/layout.tsx
-import Link from "next/link";
-import "../style/global.css";
+
+'use client'
+import { useEffect, useState } from 'react'
+import { onAuthStateChange, signOut } from "../component/auth/auth"
+import Link from "next/link"
+import "../style/global.css"
 
 export default function Navigation() {
-    const user = null;
+    const [user, setUser] = useState<any>(null);
+    useEffect(() => {
+    const subscription = onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+
+    return () => {
+      subscription.subscription.unsubscribe()
+    }
+  }, []);
   return (
     <header>
       {/* 왼쪽 메뉴 */}
@@ -14,9 +26,12 @@ export default function Navigation() {
 
       {/* 오른쪽 메뉴 */}
         {user ?  
-            <Link href="/profile">
+            <nav>
+              <Link href="/profile">
                 <img src="/user-icon.svg" alt="User Profile" />
-            </Link>
+              </Link>
+              <Link href="/" onClick={signOut}>Sing Out</Link>
+            </nav>
             :
             <nav>
                 <Link href="/signup">Sign Up</Link>

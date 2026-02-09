@@ -1,5 +1,5 @@
 'use client'
-
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { signIn } from '../../component/auth/auth'
 
@@ -7,12 +7,14 @@ export default function Page() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
+  const router = useRouter();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      await signIn(email, password)
+      await signIn(email, password);
       alert('로그인 성공!')
+      router.push('/');
     } catch (err: any) {
       setError(err.message)
     }
