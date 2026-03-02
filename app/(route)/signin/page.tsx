@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { signUp } from '../../component/auth/auth'
+import GithubButton from '../../component/loginout/githubButton'
 
 export default function Page() {
   const [email, setEmail] = useState('')
@@ -36,6 +37,7 @@ export default function Page() {
         />
         <button type="submit">가입하기</button>
       </form>
+      <GithubButton />
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   )

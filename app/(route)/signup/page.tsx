@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { signIn } from '../../component/auth/auth'
+import GithubButton from '../../component/loginout/githubButton'
 
 export default function Page() {
   const [email, setEmail] = useState('')
@@ -38,6 +39,7 @@ export default function Page() {
         />
         <button type="submit">로그인</button>
       </form>
+      <GithubButton />
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   )
