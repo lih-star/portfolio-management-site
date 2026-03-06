@@ -1,11 +1,16 @@
+/* 회원가입/로그인 폼 기본 스타일 */
 div, h1 , form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+h1, form {
     margin-top: 10px;
 }
 
+/* 입력창/버튼 스타일 */
 input , button {
     padding: 10px;
     width: 250px;
@@ -14,10 +19,8 @@ input , button {
     border-radius: 4px;
 }
 
-button {
-    cursor : pointer;
-}
-
+/* 버튼 호버링 스타일*/
 button:hover {
+    cursor : pointer;
     background-color: #e6e6e6;
 }
