@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { signIn } from '../../component/auth/auth'
 import GithubButton from '../../component/loginout/githubButton'
-import '../../style/signInOut.css'
+import styles from '../../style/signInOut.module.css'
 
 export default function Page() {
   const [email, setEmail] = useState('')
@@ -23,22 +23,26 @@ export default function Page() {
   }
 
   return (
-    <div>
-      <h1>로그인</h1>
-      <form onSubmit={handleLogin}>
+    <div className={styles.container}>
+      <h1 className={styles.title}>로그인</h1>
+      <form className={styles.formBox} onSubmit={handleLogin}>
         <input
+          className={styles.input}
           type="email"
           placeholder="이메일"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          className={styles.input}
           type="password"
           placeholder="비밀번호"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">로그인</button>
+        <button className={styles.button} type="submit">
+          로그인
+        </button>
         <GithubButton />
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}

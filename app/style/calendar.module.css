@@ -1,0 +1,36 @@
+/* 제목 스타일 */
+.title {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+/* 캘린더 스타일 */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background-color: #ccc;
+  margin-left: 50px;
+  margin-right: 50px;
+  border: 1px solid #ccc;
+}
+
+.header {
+  background-color: #eee;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.day {
+  background-color: #fff;
+  padding: 15px;
+  text-align: center;
+  height: 100px;
+}
+
+.day:hover {
+  background-color: #dff0d8;
+  cursor: pointer;
+}
