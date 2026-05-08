@@ -1,14 +1,11 @@
 import React from "react";
 import Calendar from "../component/calendar/calendar";
 
-const Page: React.FC = () => {
+export default function Page() {
   const today = new Date();
-  
   return (
     <div>
-      <Calendar year={today.getFullYear()} month={today.getMonth()} />
+      <Calendar year={today.getFullYear()} month={today.getMonth()} today={today.getDate()}/>
     </div>
   );
 };
-
-export default Page;

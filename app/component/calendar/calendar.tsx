@@ -1,43 +1,78 @@
-import React from "react";
+"use client";
+import { useEffect, useState } from "react";
 import styles from "../../style/calendar.module.css";
 
 interface CalendarProps {
   year: number;
-  month: number; // 0 = January
+  month: number;
+  today: number;
 }
 
-const Calendar: React.FC<CalendarProps> = ({ year, month }) => {
+export default function Calendar ({ year, month, today} : CalendarProps) {
+  const [currentYear, setYear] = useState(year);
+  const [currentMonth, setMonth] = useState(month);
+  const [cells, setCells] = useState<(number | null)[]>([]);
   const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
-  const firstDay = new Date(year, month, 1).getDay();
-  const lastDate = new Date(year, month + 1, 0).getDate();
 
-  const cells: (number | null)[] = [];
 
-  // 빈 칸 채우기
-  for (let i = 0; i < firstDay; i++) {
-    cells.push(null);
-  }
+  // 이전 달로 이동
+  const prevMonth = () => {
+    if (currentMonth === 0) {
+      setYear(currentYear - 1);
+      setMonth(11);
+    } else {
+      setMonth(currentMonth - 1);
+    }
+  };
 
-  // 날짜 채우기
-  for (let date = 1; date <= lastDate; date++) {
-    cells.push(date);
-  }
+  // 다음 달로 이동
+  const nextMonth = () => {
+    if (currentMonth === 11) {
+      setYear(currentYear + 1);
+      setMonth(0);
+    } else {
+      setMonth(currentMonth + 1);
+    }
+  };
+
+  useEffect(() => {
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const lastDate = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    const newCells: (number | null)[] = [];
+
+        // 빈 칸 채우기
+    for (let i = 0; i < firstDay; i++) {
+      newCells.push(null);
+    }
+
+    // 날짜 채우기
+    for (let date = 1; date <= lastDate; date++) {
+      newCells.push(date);
+    }
+
+    setCells(newCells);
+  }, [currentYear, currentMonth]);
 
   return (
     <div>
-      <h1 className={styles.title}>{year}년 {month + 1}월</h1>
+      <div className={styles.titleBox}>
+        <button onClick={prevMonth} className={styles.otherMonthButton}>◀</button>
+        <h1 className={styles.title}>{currentYear}년 {currentMonth + 1}월</h1>
+        <button onClick={nextMonth} className={styles.otherMonthButton}>▶</button>
+      </div>
       <div className={styles.calendar}>
         {daysOfWeek.map((day) => (
           <div key={day} className={styles.header}>{day}</div>
         ))}
         {cells.map((date, idx) => (
-          <div key={idx} className={styles.day}>
-            {date ?? ""}
+          <div key={idx} className={date === today &&
+                                    currentMonth === new Date().getMonth() &&
+                                    currentYear === new Date().getFullYear() ? styles.today : styles.day}>
+            {date ?? ""} 
           </div>
         ))}
       </div>
     </div>
   );
 };
-
-export default Calendar;
