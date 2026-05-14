@@ -1,10 +1,11 @@
-/* 제목 스타일 */
+/* 년 월 스타일 */
 .title {
   display: flex;
   justify-content: center;
   font-size: 40px;
 }
 
+/* 화살표 포함 스타일 */
 .titleBox {
   display: flex;
   justify-content: center;
@@ -16,14 +17,16 @@
 /* 캘린더 스타일 */
 .calendar {
   display: grid;
+  justify-content: center;
   grid-template-columns: repeat(7, 1fr);
   gap: 1px;
   background-color: #ccc;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 5%;
+  margin-right: 5%;
   border: 1px solid #ccc;
 }
 
+/* 요일 스타일 */
 .header {
   background-color: #eee;
   padding: 15px;
@@ -31,6 +34,7 @@
   font-weight: bold;
 }
 
+/* 날짜 스타일 */
 .day {
   background-color: #fff;
   padding: 15px;
@@ -43,11 +47,13 @@
   cursor: pointer;
 }
 
+/* 오늘 날짜 스타일 */
 .today {
-  composes : day;
+  composes : day; /* day 스타일을 상속받음 */
   background-color : rgb(250, 250, 236);
 }
 
+/* 다른 달 이전 버튼 스타일 */
 .otherMonthButton {
   display: flex;
   background: none;

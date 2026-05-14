@@ -35,13 +35,19 @@ export default function Calendar ({ year, month, today} : CalendarProps) {
     }
   };
 
+  // 날짜 클릭 시 캘린더 작성
+  const writeCalendar = (yr: number, mo: number, dat: number | null) => {
+    if (dat === null) return;
+    location.href = `/calendar/${yr}-${mo + 1}-${dat}`;
+  };
+
   useEffect(() => {
     const firstDay = new Date(currentYear, currentMonth, 1).getDay();
     const lastDate = new Date(currentYear, currentMonth + 1, 0).getDate();
 
     const newCells: (number | null)[] = [];
 
-        // 빈 칸 채우기
+    // 빈 칸 채우기
     for (let i = 0; i < firstDay; i++) {
       newCells.push(null);
     }
@@ -66,7 +72,8 @@ export default function Calendar ({ year, month, today} : CalendarProps) {
           <div key={day} className={styles.header}>{day}</div>
         ))}
         {cells.map((date, idx) => (
-          <div key={idx} className={date === today &&
+          date === null ? <div key={idx}></div> : 
+          <div onClick = {() => writeCalendar(currentYear, currentMonth, date)} key={idx} className={date === today &&
                                     currentMonth === new Date().getMonth() &&
                                     currentYear === new Date().getFullYear() ? styles.today : styles.day}>
             {date ?? ""} 
