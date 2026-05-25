@@ -1,0 +1,64 @@
+.eventsBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.formBox {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-top: 20px;
+}
+
+.formTitle {
+    display: flex;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.formTitle label {
+    display: flex;
+}
+
+.formTitle input {
+    display: flex;
+    justify-content: flex-end;
+    width: 40vw;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formDescription {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.formDescription label {
+    display: flex;
+}
+
+.formDescription textarea {
+    width: 40vw;
+    min-width: 40vw;
+    max-width: 40vw;
+    height: 200px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formButton {
+    height: 40px;
+    margin-top: 10px;
+}
+
+.errorMessage {
+    color: red;
+    text-align: center;
+    font-size: 25px;
+}

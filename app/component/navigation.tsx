@@ -1,5 +1,5 @@
 
-'use client'
+"use client";
 import { useEffect, useState } from 'react'
 import { onAuthStateChange, signOut } from "../component/auth/auth"
 import Link from "next/link"

@@ -38,7 +38,7 @@ export default function Calendar ({ year, month, today} : CalendarProps) {
   // 날짜 클릭 시 캘린더 작성
   const writeCalendar = (yr: number, mo: number, dat: number | null) => {
     if (dat === null) return;
-    location.href = `/calendar/${yr}-${mo + 1}-${dat}`;
+    location.href = `/events/${yr}-${mo + 1}-${dat}`;
   };
 
   useEffect(() => {
