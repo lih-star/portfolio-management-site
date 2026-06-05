@@ -30,10 +30,16 @@ export async function signOut() {
 }
 
 // 현재 로그인한 사용자 정보 가져오기
-export async function getUser() {
+export async function getSession() {
   const { data, error }  = await supabase.auth.getSession()
   if (error) throw error
   return data.session
+}
+
+export async function getUser() {
+  const { data, error } = await supabase.auth.getUser()
+  if (error) throw error
+  return data.user
 }
 
 // 인증 상태 변경 감지, 로그인시 내비게이션 바 업데이트용

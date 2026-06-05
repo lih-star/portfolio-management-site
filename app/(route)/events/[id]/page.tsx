@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter, useParams } from "next/navigation";
 import { supabase } from "../../../component/auth/supabaseClient";
 import styles from "../../../style/events.module.css";
+import { useEffect, useState } from "react";
+import { getUser } from "../../../component/auth/auth"
 
 // ✅ Zod 스키마 정의
 const eventSchema = z.object({
@@ -21,7 +23,8 @@ export default function Page() {
   if(!Params.id) return;
   const id = Params.id;
   const [year, month, day] = id.toString().split('-');
-
+  const [user, setUser] = useState<any>(null);
+  
   const {
     register,
     handleSubmit,
@@ -31,6 +34,11 @@ export default function Page() {
   });
 
   const onSubmit = async (data: EventForm) => {
+    if(user?.error) {
+        alert("로그인이 필요한 서비스입니다.");
+        router.push("/");
+        return;
+    }
     const { title, description } = data;
 
     const { error } = await supabase.from("events").insert([
@@ -49,6 +57,13 @@ export default function Page() {
     }
   };
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await supabase.auth.getUser();
+      setUser(user);
+    }
+    fetchUser();
+  }, []);
   return (
     <div className={styles.eventsBox}>
       <h1>{year}년 {month}월 {day}일 일정 작성</h1>
@@ -71,4 +86,8 @@ export default function Page() {
       </form>
     </div>
   )
+}
+
+function createServerComponentClient(arg0: { cookies: any; }) {
+  throw new Error("Function not implemented.");
 }
