@@ -40,12 +40,14 @@ export default function Page() {
         return;
     }
     const { title, description } = data;
+    const user_email = user.data.user.email;
 
     const { error } = await supabase.from("events").insert([
       {
         title,
         description,
         date: id.toString(),
+        user_email,
       },
     ]);
 
