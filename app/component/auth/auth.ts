@@ -5,9 +5,6 @@ export async function signUp(email: string, password: string) {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
-    // options: {
-    //   redirectTo: 'http://localhost:3000/'
-    // }
   })
   if (error) throw error
   return data
@@ -56,5 +53,6 @@ export async function signInUpWithGitHub() {
       redirectTo: 'http://localhost:3000/'
     }
   })
+
   if (error) console.error(error)
 }

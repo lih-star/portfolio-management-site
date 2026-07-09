@@ -27,11 +27,8 @@ export default function Navigation() {
       {/* 오른쪽 메뉴 */}
         {user ?  
             <nav>
-              <Link href="/profile">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Sample_User_Icon.svg"/>
-                User Profile
-              </Link>
-              <Link href="/" onClick={signOut}>Sing Out</Link>
+              <Link href="/myschedule">My Schedule</Link>
+              <Link href="/" onClick={signOut}>Sign Out</Link>
             </nav>
             :
             <nav>

@@ -7,7 +7,6 @@ import { useRouter, useParams } from "next/navigation";
 import { supabase } from "../../../component/auth/supabaseClient";
 import styles from "../../../style/events.module.css";
 import { useEffect, useState } from "react";
-import { getUser } from "../../../component/auth/auth"
 
 // ✅ Zod 스키마 정의
 const eventSchema = z.object({
